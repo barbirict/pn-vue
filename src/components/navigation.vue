@@ -1,31 +1,40 @@
 <template>
+  <head>
+
+  </head>
 <body>
 <header>
   <img class="logo" src="" alt="logo">
   <nav>
     <ul class="nav_links">
       <li><router-link :to="{name:'home'}">Home</router-link></li>
-      <li><router-link :to="{name:'cart'}">Cart</router-link></li>
-      <li><router-link :to="{name:'orders'}">Order History</router-link></li>
+     <!-- <li><router-link :to="{name:'cart'}">Cart</router-link></li>
+      <li><router-link :to="{name:'orders'}">Order History</router-link></li>-->
       <li><router-link :to="{name:'about'}">About us</router-link></li>
     </ul>
   </nav>
   <div class="desno">
-    <div>Hello, kurac od mitje nagi peder 300 {{curUsr}}</div>
+    <div>Hello, kurac od mitje nagi peder 300 kurac</div>
 
   </div>
 </header>
 <div id="mali">
-  <button>Log in</button>
-  <button>Log out</button>
-  <button>Register</button></div>
+  <button class="btn" onclick="location.href='/login';">Log in</button>
+  <button class="btn" v-on:click="logOut">Log out</button>
+  <button class="btn" onclick="location.href='/register';">Register</button></div>
 </body>
 </template>
 
 <script>
+import logoutAttempt from "@/data/logout";
 export default {
-  name: "navigation"
-}
+  name: "navigation",
+  methods: {
+    logOut() {
+      logoutAttempt();
+    }
+  }
+};
 </script>
 
 <style scoped>
@@ -56,5 +65,22 @@ display: flex;
 .nav_links li {
   display: inline-block;
   padding: 0px 20px;
+}
+.btn{
+  background-color: #adaca8;
+  border: none;
+  border-radius: 15px;
+  padding: 5px 10px 5px 10px;
+  font-size: 15px;
+  box-shadow: -2px 3px 1px #757472;
+}
+
+.btn:hover{
+  background-color: #c7c5c1;
+}
+
+.btn:active{
+  background-color: #757472;
+
 }
 </style>
