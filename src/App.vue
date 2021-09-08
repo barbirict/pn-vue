@@ -1,26 +1,21 @@
 <template>
-  <register-site></register-site>
+  <nav-main></nav-main>
+    <router-view></router-view>
 </template>
 
 <script>
-//import login from '@/components/views/login.vue'
-import register from '@/components/views/register.vue'
+import navigation from '@/components/navigation.vue'
+
 export default {
   name: 'App',
   components: {
- //   'login-site': login,
-    'register-site': register
+    'nav-main': navigation,
+  },
+  mounted(){
+    this.$store.commit(null);
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
 </style>
