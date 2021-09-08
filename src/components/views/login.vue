@@ -2,12 +2,8 @@
   <body>
   <div>
     <h1> <i>Prijava</i> </h1>
-    <form>
+    <form align="center" @submit.prevent="handleSubmit">
       <div class="form-container">
-        <div class="form-element">
-          <label>Your name</label>
-          <input type="text" v-model="name" placeholder="" autofocus>
-        </div>
         <div class="form-element">
           <label>Username</label>
           <input type="text" v-model="username" placeholder="" autofocus>
@@ -16,15 +12,7 @@
           <label>Password</label>
           <input type="text" v-model="pass" placeholder="" autofocus>
         </div>
-        <div class="form-element">
-          <label>e-mail</label>
-          <input type="text" v-model="email" placeholder="" autofocus>
-        </div>
-        <div class="form-element">
-          <label>mobile number</label>
-          <input type="text" v-model="number" placeholder="" autofocus>
-        </div>
-        <button type="submit">Register</button>
+        <button type="submit">login</button>
       </div>
     </form>
   </div>
@@ -32,8 +20,28 @@
 </template>
 
 <script>
+import loginAttempt from "@/data/login.js";
+
 export default {
-  name: "login"
+  name: "login",
+  data(){
+    return{
+      username: '',
+      pass: '',
+      role: 0
+    }
+  },
+  methods: {
+    handleSubmit(){
+      const data = {
+        username: this.username,
+        pass: this.pass,
+        role: this.state
+      };
+      loginAttempt(data);
+    }
+
+  }
 }
 </script>
 
