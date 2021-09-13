@@ -4,7 +4,7 @@
   </head>
 <body>
 <header>
-  <img class="logo" src="" alt="logo">
+  <img class="logo" src="https://i.kym-cdn.com/entries/icons/original/000/034/421/cover1.jpg" alt="logo" height="50" width="150">
   <nav>
     <ul class="nav_links">
       <li><router-link :to="{name:'home'}">Home</router-link></li>
@@ -22,9 +22,9 @@
   </div>
 </header>
 <div id="mali">
-  <button class="btn" v-if="isLogin===false" onclick="location.href='/login';">Log in</button>
+  <button class="btn" v-if="isLogin===false" v-on:click="location.href='/login';">Log in</button>
   <button class="btn" v-if="isLogin===true" v-on:click="logOut">Log out</button>
-  <button class="btn" v-if="isLogin===false" onclick="location.href='/register';">Register</button></div>
+  <button class="btn" v-if="isLogin===false"  v-on:click="location.href='/register';">Register</button></div>
   <button class="btn" v-on:click="sampleData">Sample data fill</button>
 </body>
 </template>
@@ -46,11 +46,13 @@ export default {
   methods: {
     logOut() {
       this.isLogin=false;
+      this.curUsr=null;
       logoutAttempt();
 
     },
     sampleData(){
       localStorage.setItem("curUsr", '{"username":"admin","name":"tilen","pass":"123455","email":"vlki.jurac@gmail.com","number":"0000000000","role":1}');
+      localStorage.setItem("userbase",'[{"username":"klinkec","name":"janez","pass":"haha123","email":"janez.mali@gejmail.com","number":"123456789","role":0},{"username":"jaki","name":"tilen","pass":"brat","email":"afs@gnm.com","number":"haha123","role":0},{"username":"bokibond","name":"Boki","pass":"pobrezje123","email":"heheh@gnm.com","number":"666999888","role":0},{"username":"admin","name":"tilen","pass":"kraljj","email":"testni@gnm.com","number":"987654231","role":1}]');
     }
   },
   data() {

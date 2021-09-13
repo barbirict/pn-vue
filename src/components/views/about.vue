@@ -5,7 +5,7 @@
   <p> We are an inspiring new company in the field of leasing board game industry \n
       We value our costumers....
   </p>
-  <img src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/bifrnag9l0q0v3wy8epp.jpg" height="150px" width="300px">
+  <img src="https://c.tenor.com/723jCifvXXoAAAAd/big-floppa-floppa.gif" height="400" width="400">
 </div>
 </body>
 </template>
