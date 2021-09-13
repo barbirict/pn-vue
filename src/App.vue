@@ -17,8 +17,8 @@ export default {
   mounted(){
     this.$store.commit(12);
   }*/
-  mounted(){
-   // alert("ok");
+  mounted() {
+    this.$store.commit('updateCartFromLocalStorage')
   }
 }
 </script>

@@ -3,7 +3,7 @@
     <h3>{{product.title}}</h3>
     <p>{{product.description}}</p>
     <p>{{product.price}} €</p>
-    <button v-if="isLogin===true" class="btn">add to cart</button>
+    <button v-if="isLogin===true" class="btn" v-on:click="addToCart">add to cart</button>
   </div>
 </template>
 
@@ -19,6 +19,16 @@ export default {
       }
       else this.isLogin=false;
     }
+    },
+  data(){
+    return{
+      isLogin: false,
+    }
+  },
+  methods:{
+    addToCart(){
+      this.$store.commit('addToCart', this.product)
+    }
   }
 }
 </script>
@@ -28,7 +38,7 @@ export default {
 .item-card{
   width: 250px;
   display: block;
-  padding: 10px;
+  //padding: 10px;
   background-color: #c7c5c1;
   border-radius: 10%;
   border: solid grey;

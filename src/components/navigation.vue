@@ -11,6 +11,7 @@
      <!-- <li><router-link :to="{name:'cart'}">Cart</router-link></li>
       <li><router-link :to="{name:'orders'}">Order History</router-link></li>-->
       <li><router-link :to="{name:'about'}">About us</router-link></li>
+      <li><router-link :to="{name:'admin'}">Admin panel</router-link></li>
     </ul>
   </nav>
   <div class="desno">
