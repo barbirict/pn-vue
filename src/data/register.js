@@ -11,3 +11,4 @@ export default function attemptRegister(data){
         localStorage.setItem('userbase', JSON.stringify(baza));
     }
 }
+

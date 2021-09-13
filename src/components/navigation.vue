@@ -14,14 +14,17 @@
     </ul>
   </nav>
   <div class="desno">
-    <div>Hello, kurac od mitje nagi peder 300 kurac</div>
+    <div v-if="isLogin===true">Hello, {{ curUsr.name}}</div>
+    <div v-else>Not logged in!!</div>
+
 
   </div>
 </header>
 <div id="mali">
-  <button class="btn" onclick="location.href='/login';">Log in</button>
-  <button class="btn" v-on:click="logOut">Log out</button>
-  <button class="btn" onclick="location.href='/register';">Register</button></div>
+  <button class="btn" v-if="isLogin===false" onclick="location.href='/login';">Log in</button>
+  <button class="btn" v-if="isLogin===true" v-on:click="logOut">Log out</button>
+  <button class="btn" v-if="isLogin===false" onclick="location.href='/register';">Register</button></div>
+  <button class="btn" v-on:click="sampleData">Sample data fill</button>
 </body>
 </template>
 
@@ -29,9 +32,31 @@
 import logoutAttempt from "@/data/logout";
 export default {
   name: "navigation",
+  created() {
+    if(localStorage.getItem("curUsr") != null) {
+      this.curUsr = JSON.parse(localStorage.getItem("curUsr"));
+      this.isLogin = true;
+      if (this.curUsr != null) {
+        if (this.curUsr.role === 1) this.isAdmin = true;
+      }
+      else this.isLogin=false;
+    }
+    },
   methods: {
     logOut() {
+      this.isLogin=false;
       logoutAttempt();
+
+    },
+    sampleData(){
+      localStorage.setItem("curUsr", '{"username":"admin","name":"tilen","pass":"123455","email":"vlki.jurac@gmail.com","number":"0000000000","role":1}');
+    }
+  },
+  data() {
+    return{
+      curUsr : null,
+      isLogin : false,
+      isAdmin : false
     }
   }
 };
