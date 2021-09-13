@@ -8,8 +8,8 @@
   <nav>
     <ul class="nav_links">
       <li><router-link :to="{name:'home'}">Home</router-link></li>
-     <!-- <li><router-link :to="{name:'cart'}">Cart</router-link></li>
-      <li><router-link :to="{name:'orders'}">Order History</router-link></li>-->
+      <li><router-link :to="{name:'basket'}">Cart</router-link></li>
+    <!--  <li><router-link :to="{name:'orders'}">Order History</router-link></li>-->
       <li><router-link :to="{name:'about'}">About us</router-link></li>
       <li><router-link :to="{name:'admin'}">Admin panel</router-link></li>
     </ul>

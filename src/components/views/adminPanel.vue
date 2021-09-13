@@ -30,7 +30,7 @@
           <li v-if="sel_user_o!=null">{{sel_user_o.role}}</li>
         </div>
       </ul>
-      <button class="btn">delete user</button>
+      <button class="btn" v-on:click="userDelete">delete user</button>
     </div>
   </div>
 </template>
@@ -53,7 +53,19 @@ export default {
           break;
         }
       }
+    },
+    userDelete(){
+      for(let i=0; i<this.userlist.length-1; i++){
+        //alert(this.userlist.username+' '+this.sel_user_o.username )
+        if(this.userlist[i].username === this.sel_user_o.username){
+          this.userlist.splice(i, 1);
+          localStorage.setItem('userbase', JSON.stringify(this.userlist));
+          alert("deleted user " + this.sel_user_o.username);
+          this.sel_user_o= null;
 
+          break;
+        }
+      }
     }
   }
 }
