@@ -5,6 +5,7 @@ import register from '@/components/views/register.vue'
 import about from '@/components/views/about.vue'
 import adminPanel from '@/components/views/adminPanel'
 import userCart from '@/components/views/userCart'
+import orderHistroy from '@/components/views/orderHistory'
 /*
 import cart from ...
 import orderHistory from ...
@@ -17,7 +18,8 @@ const routes = [
     {path: '/register', component: register, name: 'register'},
     {path: '/about', component: about, name: 'about'},
     {path: '/admin', component: adminPanel, name: 'admin'},
-    {path: '/basket', component: userCart, name: 'basket'}
+    {path: '/basket', component: userCart, name: 'basket'},
+    {path: '/usrhistory', component: orderHistroy, name: 'usrhistory'}
 
 ]
 

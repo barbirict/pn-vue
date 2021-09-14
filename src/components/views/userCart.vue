@@ -1,4 +1,7 @@
 <template>
+  <header>
+    <h1> Home </h1>
+  </header>
   <div class="cart-item-list">
     <h3>Items in cart:</h3>
     <div class="texts">
@@ -44,32 +47,36 @@ export default {
       this.basket=JSON.parse(localStorage.getItem("basket"));
     },
     doTheShop(){
-      alert("in");
+      //alert("in");
       let orderOut = [];
-      let curOrder = {id: 0, username: ""}
+      let curOrder = {id: 0, username: "", total: 0}
       let basketer = JSON.parse(localStorage.getItem("basket"));
       let ordersGlobal = JSON.parse(localStorage.getItem("ordersGlobal"));
       let curUsr = JSON.parse(localStorage.getItem("curUsr"));
-      let genId = Math.floor(Math.random() * 10000) + 2;
+      let genId = Math.floor(Math.random() * 100000) + 2;
       if(ordersGlobal == null){
         curOrder.id = genId;
         curOrder.username = curUsr.username;
+        curOrder.total = this.$store.getters.cartTotal;
         orderOut.push(curOrder);
         for(let i=0; i < basketer.length; i++){
           basketer[i].id = genId;
           orderOut.push(basketer[i]);
         }
         localStorage.setItem("ordersGlobal", JSON.stringify(orderOut));
+        alert("Order successful!");
       }
       else{
         curOrder.id = genId;
         curOrder.username = curUsr.username;
+        curOrder.total = this.$store.getters.cartTotal;
         ordersGlobal.push(curOrder);
         for(let i=0; i < basketer.length; i++){
           basketer[i].id = genId;
           ordersGlobal.push(basketer[i]);
         }
         localStorage.setItem("ordersGlobal", JSON.stringify(ordersGlobal));
+        alert("Order successful!");
       }
       console.log(ordersGlobal);
       localStorage.removeItem("basket");

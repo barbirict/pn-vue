@@ -55,7 +55,7 @@ export default {
       }
     },
     userDelete(){
-      for(let i=0; i<this.userlist.length-1; i++){
+      for(let i=0; i<this.userlist.length; i++){
         //alert(this.userlist.username+' '+this.sel_user_o.username )
         if(this.userlist[i].username === this.sel_user_o.username){
           this.userlist.splice(i, 1);

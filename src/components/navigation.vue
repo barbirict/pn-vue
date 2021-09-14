@@ -8,10 +8,10 @@
   <nav>
     <ul class="nav_links">
       <li><router-link :to="{name:'home'}">Home</router-link></li>
-      <li><router-link :to="{name:'basket'}">Cart</router-link></li>
-    <!--  <li><router-link :to="{name:'orders'}">Order History</router-link></li>-->
+      <li v-if="isAdmin===false && isLogin === true"><router-link :to="{name:'basket'}">Cart</router-link></li>
+    <li v-if="isLogin === true"><router-link :to="{name:'usrhistory'}">Order History</router-link></li>
       <li><router-link :to="{name:'about'}">About us</router-link></li>
-      <li><router-link :to="{name:'admin'}">Admin panel</router-link></li>
+      <li v-if="isAdmin===true && isLogin === true"><router-link :to="{name:'admin'}">Admin panel</router-link></li>
     </ul>
   </nav>
   <div class="desno">
@@ -22,9 +22,9 @@
   </div>
 </header>
 <div id="mali">
-  <button class="btn" v-if="isLogin===false" v-on:click="location.href='/login';">Log in</button>
+  <button class="btn" v-if="isLogin===false" onclick="location.href='/login';">Log in</button>
   <button class="btn" v-if="isLogin===true" v-on:click="logOut">Log out</button>
-  <button class="btn" v-if="isLogin===false"  v-on:click="location.href='/register';">Register</button></div>
+  <button class="btn" v-if="isLogin===false"  onclick="location.href='/register';">Register</button></div>
   <button class="btn" v-on:click="sampleData">Sample data fill</button>
 </body>
 </template>

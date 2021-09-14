@@ -56,8 +56,9 @@ export default {
         number: this.number,
         role: 0
       };
-      alert(JSON.stringify(data));
+      //alert(JSON.stringify(data));
       attemptRegister(data);
+      document.location.href = '/login', true;
       }
     }
   }
