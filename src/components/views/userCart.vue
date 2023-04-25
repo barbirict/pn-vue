@@ -1,6 +1,6 @@
 <template>
   <header>
-    <h1> Home </h1>
+    <h1> Cart </h1>
   </header>
   <div class="cart-item-list">
     <h3>Items in cart:</h3>
@@ -48,36 +48,24 @@ export default {
     },
     doTheShop(){
       //alert("in");
-      let orderOut = [];
-      let curOrder = {id: 0, username: "", total: 0}
+     // let orderOut = [];
+      let curOrder = {id: 0, username: "", total: 0, items : []}
       let basketer = JSON.parse(localStorage.getItem("basket"));
       let ordersGlobal = JSON.parse(localStorage.getItem("ordersGlobal"));
       let curUsr = JSON.parse(localStorage.getItem("curUsr"));
-      let genId = Math.floor(Math.random() * 100000) + 2;
-      if(ordersGlobal == null){
-        curOrder.id = genId;
-        curOrder.username = curUsr.username;
-        curOrder.total = this.$store.getters.cartTotal;
-        orderOut.push(curOrder);
-        for(let i=0; i < basketer.length; i++){
-          basketer[i].id = genId;
-          orderOut.push(basketer[i]);
+      const genId = Math.floor(Math.random() * 100000) + 2;
+      curOrder.id = genId
+      curOrder.username = curUsr.username
+      curOrder.items = basketer
+      curOrder.total = this.cart_total
+      if(ordersGlobal !== null){
+      ordersGlobal.push(JSON.stringify(curOrder))
         }
-        localStorage.setItem("ordersGlobal", JSON.stringify(orderOut));
-        alert("Order successful!");
+      else {
+        ordersGlobal = [JSON.stringify(curOrder)]
       }
-      else{
-        curOrder.id = genId;
-        curOrder.username = curUsr.username;
-        curOrder.total = this.$store.getters.cartTotal;
-        ordersGlobal.push(curOrder);
-        for(let i=0; i < basketer.length; i++){
-          basketer[i].id = genId;
-          ordersGlobal.push(basketer[i]);
-        }
-        localStorage.setItem("ordersGlobal", JSON.stringify(ordersGlobal));
+      localStorage.setItem("ordersGlobal", JSON.stringify(ordersGlobal))
         alert("Order successful!");
-      }
       console.log(ordersGlobal);
       localStorage.removeItem("basket");
       location.reload();

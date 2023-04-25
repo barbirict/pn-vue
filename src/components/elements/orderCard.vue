@@ -7,7 +7,7 @@
     <h4>Price:</h4>
   </div>
   <order-item-card
-      v-for="product in order.products"
+      v-for="product in order.items"
       :key="product.id"
       :product="product"
   />
